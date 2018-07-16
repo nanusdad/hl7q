@@ -9,6 +9,7 @@
   "author": "Arun Zechariah",
   "license": "ISC",
   "dependencies": {
+    "ddp": "^0.12.1",
     "express": "^4.16.3",
     "socket.io": "^2.1.0"
   }
