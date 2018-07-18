@@ -1,0 +1,27 @@
+{
+  "format": "hl7-2.4",
+  "adapter": "default",
+  "mapping": {
+    "msh": {
+      "values": [
+        { "field": "msh.message_datetime", "component": [5,1] },
+        { "field": "msh.message_type", "component": [7,3] },
+        { "field": "msh.message_type_ref", "component": [7,2] },
+        { "field": "msh.message_control_id", "component": [8,1] }
+      ]
+    },
+	"obx": {
+	"values": []
+	},
+	"obx": {
+	"values": [
+        { "field": "obx.parameter", "component": [4,1] }
+      ]
+	},
+	"obx": {
+	"values": [
+        { "field": "obx.value", "component": [4,1] }
+      ]
+	}
+  }
+}

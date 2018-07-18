@@ -1,4 +1,6 @@
 var net = require('net');
+const parser = require('@rimiti/hl7-object-parser');
+const s12Mapping = require('./s12.json');
 var textChunk = '';
 
 var DDPClient = require("ddp");
@@ -30,11 +32,16 @@ var server = net.createServer(function(socket) {
 		textChunk = data.toString('utf8');
 		console.log(textChunk);
 		socket.write(textChunk);
-		var ddpdata = JSON.parse(textChunk);
-		callDDP('addAlert', ddpdata);
+		
+		const obj = parser.decode(textChunk, s12Mapping);
+        console.log(obj);
+		
+		//var ddpdata = JSON.parse(JSON.stringify(textChunk));
+		//callDDP('addAlert', ddpdata);
 	});
 });
-server.listen(3300, '127.0.0.1');
+//server.listen(3300, '127.0.0.1');
+server.listen(3300, '10.1.40.152');//My laptop IP in Masimo's network
 
 
 function callDDP(methodname, parameters) {
