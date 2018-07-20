@@ -31,7 +31,7 @@ var server = net.createServer(function(socket) {
 		console.log(data);
 		textChunk = data.toString('utf8');
 		console.log(textChunk);
-		socket.write(textChunk);
+		socket.write(textChunk);		
 		
 		const obj = parser.decode(textChunk, s12Mapping);
         console.log(obj);
@@ -40,8 +40,8 @@ var server = net.createServer(function(socket) {
 		//callDDP('addAlert', ddpdata);
 	});
 });
-//server.listen(3300, '127.0.0.1');
-server.listen(3300, '10.1.40.152');//My laptop IP in Masimo's network
+server.listen(3300, '127.0.0.1');
+//server.listen(3300, '10.1.40.152');//My laptop IP in Masimo's network
 
 
 function callDDP(methodname, parameters) {

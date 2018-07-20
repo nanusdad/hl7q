@@ -10,17 +10,29 @@
         { "field": "msh.message_control_id", "component": [8,1] }
       ]
     },
-	"obx": {
-	"values": []
-	},
-	"obx": {
+	"obr": {
 	"values": [
-        { "field": "obx.parameter", "component": [4,1] }
+        { "field": "obr.test", "component": [2,1] }
       ]
 	},
 	"obx": {
 	"values": [
-        { "field": "obx.value", "component": [4,1] }
+        { "field": "obx.parameter_1", "component": [1,1] }
+      ]
+	},
+	"obx": {
+	"values": [
+        { "field": "obx.parameter_2", "component": [1,1] }
+      ]
+	},
+	"obx": {
+	"values": [
+        { "field": "obx.parameter_3", "component": [1,1] }
+      ]
+	},
+	"∟BX": {
+	"values": [
+        { "field": "∟BX.test", "component": [1,1] }
       ]
 	}
   }
