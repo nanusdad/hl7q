@@ -28,13 +28,16 @@ var ddpclient = new DDPClient({
 var server = net.createServer(function(socket) {
 	socket.write('Echo server\r\n');
 	socket.on('data', function(data){
-		console.log(data);
+		//console.log(data);
 		textChunk = data.toString('utf8');
-		console.log(textChunk);
-		socket.write(textChunk);		
-		
-		const obj = parser.decode(textChunk, s12Mapping);
-        console.log(obj);
+		//console.log(textChunk);
+		socket.write(textChunk);
+
+		const parsed_json_data = parser.decode(textChunk, s12Mapping);
+		console.log('----------------------------PARSED JSON DATA------------------------------');
+        console.log(parsed_json_data);
+		console.log('--------------------------------------------------------------------------');
+		callDDP('addAlert', parsed_json_data);
 		
 		//var ddpdata = JSON.parse(JSON.stringify(textChunk));
 		//callDDP('addAlert', ddpdata);

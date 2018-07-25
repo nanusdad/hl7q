@@ -15,19 +15,19 @@
         { "field": "obr.test", "component": [2,1] }
       ]
 	},
-	"obx": {
+	"obx1": {
 	"values": [
-        { "field": "obx.parameter_1", "component": [1,1] }
+        { "field": "obx1.test", "component": [1,1] }
       ]
 	},
-	"obx": {
+	"obx3": {
 	"values": [
-        { "field": "obx.parameter_2", "component": [1,1] }
+        { "field": "obx3.parameter_name", "component": [5,1] }
       ]
 	},
-	"obx": {
+	"obx4": {
 	"values": [
-        { "field": "obx.parameter_3", "component": [1,1] }
+        { "field": "obx4.value", "component": [5,1] }
       ]
 	},
 	"∟BX": {
