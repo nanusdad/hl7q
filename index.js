@@ -30,14 +30,13 @@ var server = net.createServer(function(socket) {
 	socket.on('data', function(data){
 		//console.log(data);
 		textChunk = data.toString('utf8');
-		//console.log(textChunk);
+		console.log(textChunk);
 		socket.write(textChunk);
-
 		const parsed_json_data = parser.decode(textChunk, s12Mapping);
 		console.log('----------------------------PARSED JSON DATA------------------------------');
-        console.log(parsed_json_data);
+		console.log(parsed_json_data);
 		console.log('--------------------------------------------------------------------------');
-		callDDP('addAlert', parsed_json_data);
+		//callDDP('addAlert', parsed_json_data);		
 		
 		//var ddpdata = JSON.parse(JSON.stringify(textChunk));
 		//callDDP('addAlert', ddpdata);
@@ -63,7 +62,6 @@ function callDDP(methodname, parameters) {
 		}
 
 		console.log('connected!');
-
 		console.log(methodname, parameters);
 
 		setTimeout(function () {

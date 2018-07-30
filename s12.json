@@ -12,12 +12,12 @@
     },
 	"obr": {
 	"values": [
-        { "field": "obr.test", "component": [2,1] }
+        { "field": "obr.obrtest", "component": [2,1] }
       ]
 	},
 	"obx1": {
 	"values": [
-        { "field": "obx1.test", "component": [1,1] }
+        { "field": "obx1.obxtest", "component": [1,1] }
       ]
 	},
 	"obx3": {
