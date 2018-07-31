@@ -36,7 +36,7 @@ var server = net.createServer(function(socket) {
 		console.log('----------------------------PARSED JSON DATA------------------------------');
 		console.log(parsed_json_data);
 		console.log('--------------------------------------------------------------------------');
-		//callDDP('addAlert', parsed_json_data);		
+		callDDP('addAlert', parsed_json_data);		
 		
 		//var ddpdata = JSON.parse(JSON.stringify(textChunk));
 		//callDDP('addAlert', ddpdata);
