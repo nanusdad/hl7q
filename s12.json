@@ -15,49 +15,19 @@
         { "field": "obr.obrtest", "component": [2,1] }
       ]
 	},
-	"obx11": {
+	"obx1": {
 	"values": [
-        { "field": "obx11.obxtest", "component": [1,1] }
+        { "field": "obx1.obxtest", "component": [1,1] }
       ]
 	},
-	"obx13": {
+	"obx3": {
 	"values": [
-        { "field": "obx13.parameter_name", "component": [5,1] }
+        { "field": "obx3.parameter_name", "component": [5,1] }
       ]
 	},
-	"obx14": {
+	"obx4": {
 	"values": [
-        { "field": "obx14.value", "component": [5,1] }
-      ]
-	},
-	"obx21": {
-	"values": [
-        { "field": "obx21.obxtest", "component": [1,1] }
-      ]
-	},
-	"obx23": {
-	"values": [
-        { "field": "obx23.parameter_name", "component": [5,1] }
-      ]
-	},
-	"obx24": {
-	"values": [
-        { "field": "obx24.value", "component": [5,1] }
-      ]
-	},
-	"obx31": {
-	"values": [
-        { "field": "obx31.obxtest", "component": [1,1] }
-      ]
-	},
-	"obx33": {
-	"values": [
-        { "field": "obx33.parameter_name", "component": [5,1] }
-      ]
-	},
-	"obx34": {
-	"values": [
-        { "field": "obx34.value", "component": [5,1] }
+        { "field": "obx4.value", "component": [5,1] }
       ]
 	},
 	"∟BX": {

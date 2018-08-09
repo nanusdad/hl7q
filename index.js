@@ -32,14 +32,15 @@ var server = net.createServer(function(socket) {
 		textChunk = data.toString('utf8');
 		console.log(textChunk);
 		socket.write(textChunk);
-		const parsed_json_data = parser.decode(textChunk, s12Mapping);
-		console.log('----------------------------PARSED JSON DATA------------------------------');
-		console.log(parsed_json_data);
-		console.log('--------------------------------------------------------------------------');
-		callDDP('addAlert', parsed_json_data);		
 		
-		//var ddpdata = JSON.parse(JSON.stringify(textChunk));
-		//callDDP('addAlert', ddpdata);
+        var subTextChunk = textChunk.split('♂');
+        for (var i = 1; i < subTextChunk.length; i++) {
+        const parsed_json_data = parser.decode(subTextChunk[i], s12Mapping);
+        console.log('----------------------------PARSED JSON DATA------------------------------');
+        console.log(parsed_json_data);
+        console.log('--------------------------------------------------------------------------');
+        callDDP('addAlert', parsed_json_data);
+     }			
 	});
 });
 server.listen(3300, '127.0.0.1');
