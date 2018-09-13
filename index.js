@@ -74,9 +74,8 @@ var server = net.createServer(function (socket) {
         }
     });
 });
-//server.listen(3300, '127.0.0.1');     //localhost
+server.listen(3300, '127.0.0.1');     //localhost
 //server.listen(3300, '10.1.40.152');   //One Health laptop IP in Masimo's network
-server.listen(3300, '104.236.118.123'); //One Health server IP
 
 
 function callDDP(methodname, parameters) {
