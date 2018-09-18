@@ -1,7 +1,7 @@
 var net = require('net');
 const parser = require('@rimiti/hl7-object-parser');
 const s12Mapping = require('./s12.json');
-var textChunk = '';
+var textChunk = "";
 
 var DDPClient = require("ddp");
 
@@ -27,56 +27,36 @@ var ddpclient = new DDPClient({
 
 var server = net.createServer(function (socket) {
     socket.write('Echo server\r\n');
-//    socket.on('data', function (data) {
-//        //console.log(data);
-//        textChunk = data.toString('utf8');
-//        //console.log(textChunk);
-//        socket.write(textChunk);
-//        var textChunkTrim = textChunk.substring(textChunk.indexOf("♂"));
-//        textChunkTrim.trim();
-//
-//        subTextChunk = textChunkTrim.split('♂');
-//        for (var i = 0; i < subTextChunk.length; i++) {
-//            const parsed_json_data = parser.decode(subTextChunk[i], s12Mapping);
-//            console.log('----------------------------PARSED JSON DATA------------------------------');
-//            console.log(parsed_json_data);
-//            console.log('--------------------------------------------------------------------------');
-//            callDDP('addAlert', parsed_json_data);
-//        }
-//    });
-
-    var textChunk = "";
     socket.on('data', function (data) {
-        textChunk += data.toString('utf8'); // Add string on the end of the variable 'chunk'
-        socket.write(textChunk);
-        d_index = textChunk.indexOf('♂'); // Find the delimiter       
-        console.log('d_index : ', d_index);
+        textChunk += data.toString('utf8'); // Add string on the end of the variable 'textChunk'
+        console.log('\n textChunk : \n',textChunk);       
+        d_index = textChunk.indexOf('\u000b'); // Find the delimiter '♂ or \u000b'       
 
         // While loop to keep going until no delimiter can be found
         while (d_index > -1) {
             try {
                 subTextChunk = textChunk.substring(0, d_index); // Create string up until the delimiter                
-                console.log('subTextChunk : ', subTextChunk);
-                if (subTextChunk) {                    
+                console.log('\n subTextChunk : \n', subTextChunk);                
+                if (subTextChunk) {
                     const parsed_json_data = parser.decode(subTextChunk, s12Mapping);
                     console.log('----------------------------PARSED JSON DATA------------------------------');
                     console.log(parsed_json_data);
                     console.log('--------------------------------------------------------------------------');
-                    callDDP('addAlert', parsed_json_data);
+                    //callDDP('addAlert', parsed_json_data);
                 }
             } catch (ex) {
                 console.log(ex);
             }
 
-            textChunk = textChunk.substring(d_index + 1); // Cuts off the processed chunk
-            console.log('&&&&&&&&&&& ', textChunk);
-            d_index = textChunk.indexOf('♂'); // Find the new delimiter
+            textChunk = textChunk.substring(d_index + 1); // Cuts off the processed textChunk
+            //console.log('textChunk : ', textChunk);
+            d_index = textChunk.indexOf('\u000b'); // Find the new delimiter '♂ or \u000b'
         }
     });
 });
-server.listen(3300, '127.0.0.1');     //localhost
+//server.listen(3300, '127.0.0.1');     //localhost
+server.listen(3300, '104.236.118.123');   //One Health server IP
 //server.listen(3300, '10.1.40.152');   //One Health laptop IP in Masimo's network
-
 
 function callDDP(methodname, parameters) {
     ddpclient.connect(function (error, wasReconnect) {
@@ -88,18 +68,13 @@ function callDDP(methodname, parameters) {
         } else {
             console.log('DDP connection success!');
         }
-
         if (wasReconnect) {
             console.log('Reestablishment of a connection.');
         }
-
         console.log('connected!');
-        console.log(methodname, parameters);
 
         setTimeout(function () {
-            /*
-             * Call a Meteor Method
-             */
+            /* Call a Meteor Method */
             ddpclient.call(
                     methodname, // name of Meteor Method being called
                     [parameters], // parameters to send to Meteor Method

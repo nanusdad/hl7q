@@ -1,39 +1,58 @@
 {
-  "format": "hl7-2.4",
-  "adapter": "default",
-  "mapping": {
-    "msh": {
-      "values": [
-        { "field": "msh.message_datetime", "component": [5,1] },
-        { "field": "msh.message_type", "component": [7,3] },
-        { "field": "msh.message_type_ref", "component": [7,2] },
-        { "field": "msh.message_control_id", "component": [8,1] }
-      ]
-    },
-	"obr": {
-	"values": [
-        { "field": "obr.obrtest", "component": [2,1] }
-      ]
-	},
-	"obx1": {
-	"values": [
-        { "field": "obx1.obxtest", "component": [1,1] }
-      ]
-	},
-	"obx3": {
-	"values": [
-        { "field": "obx3.parameter_name", "component": [5,1] }
-      ]
-	},
-	"obx4": {
-	"values": [
-        { "field": "obx4.value", "component": [5,1] }
-      ]
-	},
-	"∟BX": {
-	"values": [
-        { "field": "∟BX.test", "component": [1,1] }
-      ]
-	}
-  }
+    "format": "hl7-2.4",
+    "adapter": "default",
+    "mapping": {
+        "MSH": {
+            "values": [
+                {
+                    "field": "MSH.message_datetime",
+                    "component": [5, 1]
+                },
+                {
+                    "field": "MSH.message_type",
+                    "component": [7, 3]
+                }
+            ]
+        },
+        "OBR": {
+            "values": [
+                {
+                    "field": "OBR.device_type",
+                    "component": [44, 2]
+                }
+            ]
+        },
+        "OBX1": {
+            "values": [
+                {
+                    "field": "OBX1.ignored",
+                    "component": [1, 1]
+                }
+            ]
+        },
+        "OBX2": {
+            "values": [
+                {
+                    "field": "OBX2.ignored",
+                    "component": [1, 1]
+                }
+            ]
+        },
+        "OBX3": {
+            "values": [
+                {
+                    "field": "OBX3.parameter_name",
+                    "component": [5, 1]
+                }
+            ]
+        },
+        "OBX4": {
+            "values": [
+                {
+                    "field": "OBX4.value",
+                    "component": [5, 1]
+                }
+            ]
+        }
+    }
 }
