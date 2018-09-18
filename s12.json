@@ -14,6 +14,22 @@
                 }
             ]
         },
+        "PV1": {
+            "values": [
+                {
+                    "field": "PV1.point_of_care",
+                    "component": [3, 1]
+                },
+                {
+                    "field": "PV1.room",
+                    "component": [3, 2]
+                },
+                {
+                    "field": "PV1.bed",
+                    "component": [3, 3]
+                }
+            ]
+        },
         "OBR": {
             "values": [
                 {
@@ -51,6 +67,30 @@
                 {
                     "field": "OBX4.value",
                     "component": [5, 1]
+                }
+            ]
+        },
+        "OBX5": {
+            "values": [
+                {
+                    "field": "OBX5.ignored",
+                    "component": [1, 1]
+                }
+            ]
+        },
+        "OBX6": {
+            "values": [
+                {
+                    "field": "OBX6.ignored",
+                    "component": [1, 1]
+                }
+            ]
+        },
+        "OBX7": {
+            "values": [
+                {
+                    "field": "OBX7.ignored",
+                    "component": [1, 1]
                 }
             ]
         }
