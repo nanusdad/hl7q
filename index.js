@@ -42,7 +42,11 @@ var server = net.createServer(function (socket) {
                     console.log('----------------------------PARSED JSON DATA------------------------------');
                     console.log(parsed_json_data);
                     console.log('--------------------------------------------------------------------------');
-                    callDDP('addAlert', parsed_json_data);
+					if (parsed_json_data.OBX3 && parsed_json_data.OBX4) {
+						if (parsed_json_data.OBX3.parameter_name && parsed_json_data.OBX4.value) {
+							callDDP('addAlert', parsed_json_data);
+						}
+					}
                 }
             } catch (ex) {
                 console.log(ex);
@@ -55,8 +59,8 @@ var server = net.createServer(function (socket) {
     });
 });
 //server.listen(3300, '127.0.0.1');     //localhost
-server.listen(3300, '104.236.118.123');   //One Health server IP
-//server.listen(3300, '10.1.40.152');   //One Health laptop IP in Masimo's network
+server.listen(3300, '104.236.118.123');   //One Health server IP to be set in SafetyNet
+//server.listen(3300, '10.1.40.152');   //One Health laptop IP set in Masimo's SafetyNet
 
 function callDDP(methodname, parameters) {
     ddpclient.connect(function (error, wasReconnect) {
@@ -79,7 +83,7 @@ function callDDP(methodname, parameters) {
                     methodname, // name of Meteor Method being called
                     [parameters], // parameters to send to Meteor Method
                     function (err, result) { // callback which returns the method call results
-                        console.log('called method ' + methodname + ' result: ' + result);
+                        console.log('called method ' + methodname);
                     },
                     function () { // callback which fires when server has finished
                         console.log('updated'); // sending any updated documents as a result of
