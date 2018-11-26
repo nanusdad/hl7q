@@ -73,24 +73,24 @@
         "OBX5": {
             "values": [
                 {
-                    "field": "OBX5.ignored",
-                    "component": [1, 1]
+                    "field": "OBX5.event_phase",
+                    "component": [5, 1]
                 }
             ]
         },
         "OBX6": {
             "values": [
                 {
-                    "field": "OBX6.ignored",
-                    "component": [1, 1]
+                    "field": "OBX6.alarm_state",
+                    "component": [5, 1]
                 }
             ]
         },
         "OBX7": {
             "values": [
                 {
-                    "field": "OBX7.ignored",
-                    "component": [1, 1]
+                    "field": "OBX7.alarm_inactivation_state",
+                    "component": [5, 1]
                 }
             ]
         }
