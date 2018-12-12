@@ -27,6 +27,10 @@
                 {
                     "field": "PV1.bed",
                     "component": [3, 3]
+                },
+                {
+                    "field": "PV1.floor",
+                    "component": [3, 8]
                 }
             ]
         },
@@ -64,6 +68,10 @@
         },
         "OBX4": {
             "values": [
+                {
+                    "field": "OBX4.value_type",
+                    "component": [2, 1]
+                },
                 {
                     "field": "OBX4.value",
                     "component": [5, 1]

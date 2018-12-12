@@ -39,8 +39,8 @@ var server = net.createServer(function (socket) {
                     console.log('----------------------------PARSED JSON DATA------------------------------');
                     console.log(parsed_json_data);
                     console.log('--------------------------------------------------------------------------');
-                    if (parsed_json_data.OBX3 && parsed_json_data.OBX4) {
-                        if (parsed_json_data.OBX3.parameter_name && parsed_json_data.OBX4.value) {
+                    if (parsed_json_data.PV1 && parsed_json_data.OBX3 && parsed_json_data.OBX4) {
+                        if (parsed_json_data.PV1.point_of_care && parsed_json_data.PV1.room && parsed_json_data.PV1.bed && parsed_json_data.OBX3.parameter_name && parsed_json_data.OBX4.value) {
                             callDDP('addAlert', parsed_json_data);
                         }
                     }
