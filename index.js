@@ -29,7 +29,7 @@ var server = net.createServer(function (socket) {
     socket.write('Echo server\r\n');
     socket.on('data', function (data) {
         textChunk += data.toString('utf8'); // Add string on the end of the variable 'textChunk'   		
-        d_index = textChunk.indexOf('\u000b'); // Find the delimiter '♂ or \u000b'       
+        d_index = textChunk.indexOf('\u000b'); // Find the delimiter '♂ or \u000b' ( \u001C file seperator)       
         // While loop to keep going until no delimiter can be found
         while (d_index > -1) {
             try {
