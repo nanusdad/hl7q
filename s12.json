@@ -2,15 +2,103 @@
     "format": "hl7-2.4",
     "adapter": "default",
     "mapping": {
-        "MSH": {
+        "\u000bMSH": {
             "values": [
                 {
-                    "field": "MSH.message_datetime",
+                    "field": "MSH.C",
+                    "component": [2, 1]
+                },
+                {
+                    "field": "MSH.D",
+                    "component": [3, 1]
+                },
+                {
+                    "field": "MSH.E",
+                    "component": [4, 1]
+                },
+                {
+                    "field": "MSH.F",
                     "component": [5, 1]
                 },
                 {
-                    "field": "MSH.message_type",
-                    "component": [7, 3]
+                    "field": "MSH.G",
+                    "component": [6, 1]
+                },
+                {
+                    "field": "MSH.H",
+                    "component": [7, 1]
+                },
+                {
+                    "field": "MSH.Ia",
+                    "component": [8, 1]
+                },
+                {
+                    "field": "MSH.Ib",
+                    "component": [8, 2]
+                },
+                {
+                    "field": "MSH.Ic",
+                    "component": [8, 3]
+                },
+                {
+                    "field": "MSH.J",
+                    "component": [9, 1]
+                },
+                {
+                    "field": "MSH.K",
+                    "component": [10, 1]
+                },
+                {
+                    "field": "MSH.L",
+                    "component": [11, 1]
+                },
+                {
+                    "field": "MSH.M",
+                    "component": [12, 1]
+                },
+                {
+                    "field": "MSH.N",
+                    "component": [13, 1]
+                },
+                {
+                    "field": "MSH.O",
+                    "component": [14, 1]
+                },
+                {
+                    "field": "MSH.P",
+                    "component": [15, 1]
+                },
+                {
+                    "field": "MSH.Q",
+                    "component": [16, 1]
+                },
+                {
+                    "field": "MSH.R",
+                    "component": [17, 1]
+                },
+                {
+                    "field": "MSH.S",
+                    "component": [18, 1]
+                },
+                {
+                    "field": "MSH.T",
+                    "component": [19, 1]
+                },
+                {
+                    "field": "MSH.Ua",
+                    "component": [20, 1]
+                },
+                {
+                    "field": "MSH.Ub",
+                    "component": [20, 2]
+                },
+                {
+                    "field": "MSH.Uc",
+                    "component": [20, 3]
+                },
+                {
+                    "field": "MSH.Ud",
+                    "component": [20, 4]
                 }
             ]
         },

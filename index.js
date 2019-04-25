@@ -1,4 +1,4 @@
-var net = require('net');
+﻿var net = require('net');
 const parser = require('@rimiti/hl7-object-parser');
 const s12Mapping = require('./s12.json');
 var textChunk = "";
@@ -29,19 +29,29 @@ var server = net.createServer(function (socket) {
     socket.write('Echo server\r\n');
     socket.on('data', function (data) {
         textChunk += data.toString('utf8'); // Add string on the end of the variable 'textChunk'   		
-        d_index = textChunk.indexOf('\u000b'); // Find the delimiter '♂ or \u000b' ( \u001C file seperator)       
+        d_index = textChunk.indexOf('\u001C'); // Find the delimiter '\u001C () file seperator or \u000b (♂) male'       
         // While loop to keep going until no delimiter can be found
         while (d_index > -1) {
             try {
                 subTextChunk = textChunk.substring(0, d_index); // Create string up until the delimiter                
                 if (subTextChunk) {
+                    //console.log(subTextChunk.toString());
                     const parsed_json_data = parser.decode(subTextChunk, s12Mapping);
-                    console.log('----------------------------PARSED JSON DATA------------------------------');
+
+                    var message_header = 'MSH|^~\&|' + parsed_json_data.MSH.C + '|' + parsed_json_data.MSH.D + '|' + parsed_json_data.MSH.E + '|' + parsed_json_data.MSH.F + '|' + parsed_json_data.MSH.G + '|' + parsed_json_data.MSH.H + '|' + parsed_json_data.MSH.Ia + '^' + parsed_json_data.MSH.Ib + '^' + parsed_json_data.MSH.Ic + '|' + parsed_json_data.MSH.J + '|' + parsed_json_data.MSH.K + '|' + parsed_json_data.MSH.L + '|' + parsed_json_data.MSH.M + '|' + parsed_json_data.MSH.N + '|' + parsed_json_data.MSH.O + '|' + parsed_json_data.MSH.P + '|' + parsed_json_data.MSH.Q + '|' + parsed_json_data.MSH.R + '|' + parsed_json_data.MSH.S + '|' + parsed_json_data.MSH.T + '|' + parsed_json_data.MSH.Ua + '^' + parsed_json_data.MSH.Ub + '^' + parsed_json_data.MSH.Uc + '^' + parsed_json_data.MSH.Ud + '\n' + 'MSA|AA|' + parsed_json_data.MSH.J;
+                    console.log(message_header);
+                    socket.write('ACK');
+                    
+                    console.log('----------------------------PARSED JSON DATA START------------------------------');
                     console.log(parsed_json_data);
-                    console.log('--------------------------------------------------------------------------');
+                    console.log('\n----------------------------PARSED JSON DATA END------------------------------\n');
                     if (parsed_json_data.PV1 && parsed_json_data.OBX3 && parsed_json_data.OBX4) {
-                        if (parsed_json_data.PV1.point_of_care && parsed_json_data.PV1.room && parsed_json_data.PV1.bed && parsed_json_data.OBX3.parameter_name && parsed_json_data.OBX4.value) {
-                            callDDP('addAlert', parsed_json_data);
+                        if (parsed_json_data.PV1.point_of_care && parsed_json_data.PV1.room && parsed_json_data.PV1.bed && parsed_json_data.PV1.floor && parsed_json_data.OBX3.parameter_name) {
+                            if ((parsed_json_data.OBX4.value_type == 'NM') && (parsed_json_data.OBX4.value)) {
+                                callDDP('addAlert', parsed_json_data);
+                            } else if (parsed_json_data.OBX4.value_type == 'CWE') {
+                                callDDP('addAlert', parsed_json_data);
+                            }
                         }
                     }
                 }
@@ -51,7 +61,7 @@ var server = net.createServer(function (socket) {
 
             textChunk = textChunk.substring(d_index + 1); // Cuts off the processed textChunk
             //console.log('textChunk : ', textChunk);
-            d_index = textChunk.indexOf('\u000b'); // Find the new delimiter '♂ or \u000b'
+            d_index = textChunk.indexOf('\u001C'); //  Find the delimiter '\u001C () file seperator or \u000b (♂) male'
         }
     });
 });
