@@ -37,11 +37,9 @@ var server = net.createServer(function (socket) {
                 if (subTextChunk) {
                     //console.log(subTextChunk.toString());
                     const parsed_json_data = parser.decode(subTextChunk, s12Mapping);
-
                     var message_header = 'MSH|^~\&|' + parsed_json_data.MSH.C + '|' + parsed_json_data.MSH.D + '|' + parsed_json_data.MSH.E + '|' + parsed_json_data.MSH.F + '|' + parsed_json_data.MSH.G + '|' + parsed_json_data.MSH.H + '|' + parsed_json_data.MSH.Ia + '^' + parsed_json_data.MSH.Ib + '^' + parsed_json_data.MSH.Ic + '|' + parsed_json_data.MSH.J + '|' + parsed_json_data.MSH.K + '|' + parsed_json_data.MSH.L + '|' + parsed_json_data.MSH.M + '|' + parsed_json_data.MSH.N + '|' + parsed_json_data.MSH.O + '|' + parsed_json_data.MSH.P + '|' + parsed_json_data.MSH.Q + '|' + parsed_json_data.MSH.R + '|' + parsed_json_data.MSH.S + '|' + parsed_json_data.MSH.T + '|' + parsed_json_data.MSH.Ua + '^' + parsed_json_data.MSH.Ub + '^' + parsed_json_data.MSH.Uc + '^' + parsed_json_data.MSH.Ud + '\n' + 'MSA|AA|' + parsed_json_data.MSH.J;
                     console.log(message_header);
-                    socket.write('ACK');
-                    
+                    socket.write(message_header);                    
                     console.log('----------------------------PARSED JSON DATA START------------------------------');
                     console.log(parsed_json_data);
                     console.log('\n----------------------------PARSED JSON DATA END------------------------------\n');
