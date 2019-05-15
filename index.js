@@ -77,12 +77,12 @@ function callDDP(methodname, parameters) {
             console.log('DDP connection error!');
             return;
         } else {
-            console.log('DDP connection success!');
+            //console.log('DDP connection success!');
         }
         if (wasReconnect) {
-            console.log('Reestablishment of a connection.');
+            //console.log('Reestablishment of a connection.');
         }
-        console.log('connected!');
+        //console.log('connected!');
 
         setTimeout(function () {
             /* Call a Meteor Method */
@@ -90,10 +90,10 @@ function callDDP(methodname, parameters) {
                 methodname, // name of Meteor Method being called
                 [parameters], // parameters to send to Meteor Method
                 function (err, result) { // callback which returns the method call results
-                    console.log('called method ' + methodname);
+                    //console.log('called method ' + methodname);
                 },
                 function () { // callback which fires when server has finished
-                    console.log('updated'); // sending any updated documents as a result of
+                    //console.log('updated'); // sending any updated documents as a result of
                     ddpclient.close();
                 }
             );
